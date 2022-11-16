@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet"  href="{% static 'css/index.css' %}">
+
+<div class="form">
+    <form method="post">
+        {% csrf_token %}
+        {{form}}
+        <button type='submit'>Submit</button>
+    </form>
+    {% for todo in tasks %}
+    <p>{{todo.task}}</p>
+    <a href="{% url 'update' todo.id %}"><button>Update</button></a>
+    <a href="{% url 'delete' todo.id %}"><button>Delete</button></a>
+    {% endfor %}
+
+</div>
